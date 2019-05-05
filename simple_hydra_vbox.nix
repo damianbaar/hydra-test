@@ -12,6 +12,14 @@
       deployment.virtualbox.headless          = true;
       services.nixosManual.showManual         = false;
       services.ntp.enable                     = false;
+    programs.ssh = {
+      knownHosts = [
+      { hostNames = [ "github.com" "140.82.118.4" ]; publicKey = ""; }
+      ];
+      extraConfig = ''
+          StrictHostKeyChecking no
+        '';
+  };
       # services.openssh.allowSFTP              = false;
       # services.openssh.enable = true;
       # services.openssh.passwordAuthentication = false;
